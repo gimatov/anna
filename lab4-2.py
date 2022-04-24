@@ -52,4 +52,3 @@ for key in hash_table:
             hash_table[key].remove(word)
 print(hash_table.items())
 print(datetime.now() - start_time)
-

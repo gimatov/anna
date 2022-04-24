@@ -1,10 +1,5 @@
-import re
 import hashlib
 from datetime import datetime
-import time
-
-N = int(input('Введите длину хэша. Доступные значения: 1..255\n'))
-start_time = datetime.now()
 
 
 def my_hash_fun(value):
@@ -12,10 +7,13 @@ def my_hash_fun(value):
     return temp[:N]
 
 
+N = int(input('Введите длину хэша. Доступные значения: 1..255\n'))
+start_time = datetime.now()
+
 hash_table = {}
 
-string = open('text4-3.txt')
-for line in string:
+data_from_file = open('text4-3.txt')
+for line in data_from_file:
     for word in line.split(" "):
         hash_value = my_hash_fun(word.encode())
         if hash_table.get(hash_value) is not None:
