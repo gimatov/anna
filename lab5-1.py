@@ -2,36 +2,38 @@ from random import randrange
 
 
 def merge_sort(alist):
-    if len(alist) > 1:
-        mid = len(alist) // 2
-        left_half = alist[:mid]
-        right_half = alist[mid:]
+    if len(alist) == 1:
+        return
 
-        merge_sort(left_half)
-        merge_sort(right_half)
+    mid = len(alist) // 2
+    left_half = alist[:mid]
+    right_half = alist[mid:]
 
-        _i = 0
-        _j = 0
-        _k = 0
+    merge_sort(left_half)
+    merge_sort(right_half)
 
-        while _i < len(left_half) and _j < len(right_half):
-            if left_half[_i] < right_half[_j]:
-                alist[_k] = left_half[_i]
-                _i = _i + 1
-            else:
-                alist[_k] = right_half[_j]
-                _j = _j + 1
-            _k = _k + 1
+    _i = 0
+    _j = 0
+    _k = 0
 
-        while _i < len(left_half):
+    while _i < len(left_half) and _j < len(right_half):
+        if left_half[_i] < right_half[_j]:
             alist[_k] = left_half[_i]
-            _i = _i + 1
-            _k = _k + 1
-
-        while _j < len(right_half):
+            _i += 1
+        else:
             alist[_k] = right_half[_j]
-            _j = _j + 1
-            _k = _k + 1
+            _j += 1
+        _k += 1
+
+    while _i < len(left_half):
+        alist[_k] = left_half[_i]
+        _i += 1
+        _k += 1
+
+    while _j < len(right_half):
+        alist[_k] = right_half[_j]
+        _j += 1
+        _k += 1
 
 
 N = randrange(100)
