@@ -14,8 +14,8 @@ def my_hash_fun(value):
 
 hash_table = {}
 
-string = open('text4-2.txt')
-for line in string:
+data_from_file = open('text4-2.txt')
+for line in data_from_file:
     for dirty_word in line.split(" "):
         word = re.findall(r'[a-zA-Z\dа-яА-Я]+', dirty_word)
         if len(word) == 0:
