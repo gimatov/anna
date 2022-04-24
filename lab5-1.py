@@ -1,52 +1,53 @@
 from random import randrange
 
+
+def merge_sort(alist):
+    if len(alist) > 1:
+        mid = len(alist) // 2
+        left_half = alist[:mid]
+        right_half = alist[mid:]
+
+        merge_sort(left_half)
+        merge_sort(right_half)
+
+        _i = 0
+        _j = 0
+        _k = 0
+
+        while _i < len(left_half) and _j < len(right_half):
+            if left_half[_i] < right_half[_j]:
+                alist[_k] = left_half[_i]
+                _i = _i + 1
+            else:
+                alist[_k] = right_half[_j]
+                _j = _j + 1
+            _k = _k + 1
+
+        while _i < len(left_half):
+            alist[_k] = left_half[_i]
+            _i = _i + 1
+            _k = _k + 1
+
+        while _j < len(right_half):
+            alist[_k] = right_half[_j]
+            _j = _j + 1
+            _k = _k + 1
+
+
 N = randrange(100)
 array = []
-for i in range(N):
+for _ in range(N):
     array.append(randrange(-100, 100))
 print(array)
 
 array_new = []
-for i in array:
-    if i < 0 and i % 2 == 1:
-        array_new.append(i)
+for el in array:
+    if el < 0 and el % 2 == 1:
+        array_new.append(el)
 print(array_new)
 
 
-def mergeSort(alist):
-    if len(alist) > 1:
-        mid = len(alist) // 2
-        lefthalf = alist[:mid]
-        righthalf = alist[mid:]
-
-        mergeSort(lefthalf)
-        mergeSort(righthalf)
-
-        i = 0
-        j = 0
-        k = 0
-
-        while i < len(lefthalf) and j < len(righthalf):
-            if lefthalf[i] < righthalf[j]:
-                alist[k] = lefthalf[i]
-                i = i + 1
-            else:
-                alist[k] = righthalf[j]
-                j = j + 1
-            k = k + 1
-
-        while i < len(lefthalf):
-            alist[k] = lefthalf[i]
-            i = i + 1
-            k = k + 1
-
-        while j < len(righthalf):
-            alist[k] = righthalf[j]
-            j = j + 1
-            k = k + 1
-
-
-mergeSort(array_new)
+merge_sort(array_new)
 print(array_new)
 
 j = 0
