@@ -1,16 +1,15 @@
 import re
 import hashlib
 from datetime import datetime
-import time
 
-
-N = int(input('Введите длину хэша. Доступные значения: 1..255\n'))
-start_time = datetime.now()
 
 def my_hash_fun(value):
     temp = hashlib.sha512(value).hexdigest()
     return temp[:N]
 
+
+N = int(input('Введите длину хэша. Доступные значения: 1..255\n'))
+start_time = datetime.now()
 
 hash_table = {}
 
